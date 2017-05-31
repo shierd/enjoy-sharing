@@ -9,7 +9,7 @@
 
 <div id="content">
 <form enctype="multipart/form-data" method="POST" action="upload/user_upload.php" >
-	<input type="hidden" name="MAX_FILE_SIZE" value="30000" />
+	<input type="hidden" name="MAX_FILE_SIZE" value="2097152" />
 	<input type="file" name="file" />
 	<input type="submit" value="上传" />
 </form>
