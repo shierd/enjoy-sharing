@@ -5,6 +5,9 @@ define('DBNAME','enjoy_sharing');
 define('DBUSER','root');
 define('DBPASS','root');
 
+define('ROOT',dirname(__FILE__).'/../');
+define('USER',dirname(__FILE__).'/../user/');
+
 $debug=true;
 if($debug){
 	ini_set('display_errors',1);

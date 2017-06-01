@@ -1,6 +1,6 @@
 <?php
 
-require 'config.php';
+require_once('config.php');
 
 class DB{
 	public static $conn=null;
@@ -16,6 +16,12 @@ class DB{
 		if(self::$conn==null) return '请连接数据库';
 		$res=self::$conn->query($sql);
 		return $res->fetch_all(MYSQLI_BOTH);
+	}
+	
+	public static function insert($sql){
+		if(self::$conn==null) return '请连接数据库';
+		$res=self::$conn->query($sql);
+		return $res;
 	}
 	
 	public static function close(){

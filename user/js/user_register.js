@@ -8,6 +8,8 @@ $(document).ready(function(){
 				var data=$.parseJSON(data);
 				if(data.errCode==0){
 					alert(data.msg);
+				}else{
+					alert(data.msg);
 				}
 			}
 		});

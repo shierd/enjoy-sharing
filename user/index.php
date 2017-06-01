@@ -6,14 +6,16 @@
 ?>
 
 <div id="content">
-	<!--用submit好还是用ajax好呢-->
-	<form method="POST" action="login.php" >
+	<form>
 		邮箱：<input type="text" name="useremail" />
 		密码：<input type="text" name="userpass" />
-		<input type="submit" value="登录" />
+		<button id="btn_login" type="button" >登录</button>
 	</form>
 	<a href="register.php" >注册</a>
 </div>
+
+<script type="text/javascript" src="js/user_login.js"></script>
+
 <?php
 	require 'layouts/user_footer.php';
 ?>
