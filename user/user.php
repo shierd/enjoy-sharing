@@ -44,9 +44,33 @@ if($action=='login'){
 
 	if($user->login()){
 		session_start();
-		$_SESSION['user']=true;
+		$_SESSION['user']="$useremail";
+		$_SESSION['pass']="$userpass";
 		echo json_encode(['errCode'=>0]);
 	}else{
 		echo json_encode(['errCode'=>1,'msg'=>'用户名或密码错误']);
+	}
+}
+
+session_start();
+if($_SESSION['user']!=null&&$_SESSION['pass']!=null){
+	$user=new User($_SESSION['user'],$_SESSION['pass']);
+	
+	if($action=='upload'){
+		if($_FILES['file']['error']==UPLOAD_ERR_FORM_SIZE||$_FILES['file']['error']==UPLOAD_ERR_INI_SIZE){
+			echo json_encode(['errCode'=>101,'msg'=>'文件过大']);
+			exit(0);
+		}
+		if(file_exists($user->getUhome().$_FILES['file']['name'])){
+			echo json_encode(['errCode'=>102,'msg'=>'文件已存在']);
+			exit(0);
+		}
+		//类型检查
+		
+		if($_FILES['file']['error']==UPLOAD_ERR_OK){
+			if(move_uploaded_file($_FILES['file']['tmp_name'],$user->getUhome().$_FILES['file']['name'])){
+				echo json_encode(['errCode'=>0,'msg'=>'上传成功']);
+			}
+		}
 	}
 }

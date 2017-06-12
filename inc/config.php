@@ -7,6 +7,7 @@ define('DBPASS','root');
 
 define('ROOT',dirname(__FILE__).'/../');
 define('USER',dirname(__FILE__).'/../user/');
+define('USERHOME',dirname(__FILE__).'/../userhome/');
 
 $debug=true;
 if($debug){

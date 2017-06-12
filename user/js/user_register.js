@@ -8,6 +8,7 @@ $(document).ready(function(){
 				var data=$.parseJSON(data);
 				if(data.errCode==0){
 					alert(data.msg);
+					window.location.href="index.php";
 				}else{
 					alert(data.msg);
 				}

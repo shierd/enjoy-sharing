@@ -8,11 +8,28 @@ class User{
 	private $email;
 	private $uname;
 	private $upass;
+	private $uhome;
 	
 	public function __construct($email,$upass,$uname=null){
 		$this->email=$email;
-		$this->uname=$uname;
 		$this->upass=$upass;
+		if($uname==null){
+			DB::connect();
+			$res=DB::query("select u_name,u_home from user where u_email='{$email}'");
+			$user=(count($res)==0) ? null : $res[0];
+			$this->uname=$user['u_name'];
+			$this->uhome=USERHOME.$user['u_home'].'/';
+			DB::close();
+		}else
+			$this->uname=$uname;
+	}
+	
+	public function getUname(){
+		return $this->uname;
+	}
+	
+	public function getUhome(){
+		return $this->uhome;
 	}
 	
 	public function register(){
@@ -21,6 +38,7 @@ class User{
 		$uhome=(count($res)==0) ? '10001' : ($res[0]['u_home']+1);
 		$success=DB::insert("insert into user (u_name,u_email,u_pass,u_home) values ('{$this->uname}','{$this->email}','{$this->upass}','$uhome')");
 		DB::close();
+		if($success) mkdir(USERHOME.$uhome);
 		return $success;
 	}
 	
