@@ -5,6 +5,8 @@ require_once(USER.'inc/User.class.php');
 require_once(USER.'inc/Filter.class.php');
 require_once(ROOT.'inc/DB.class.php');
 
+session_start();
+
 //缺过滤
 if(isset($_POST['action'])) $action=$_POST['action'];
 
@@ -43,7 +45,6 @@ if($action=='login'){
 	$user=new User($useremail,$userpass);
 
 	if($user->login()){
-		session_start();
 		$_SESSION['user']="$useremail";
 		$_SESSION['pass']="$userpass";
 		echo json_encode(['errCode'=>0]);
@@ -52,7 +53,6 @@ if($action=='login'){
 	}
 }
 
-session_start();
 if($_SESSION['user']!=null&&$_SESSION['pass']!=null){
 	$user=new User($_SESSION['user'],$_SESSION['pass']);
 	
@@ -71,6 +71,16 @@ if($_SESSION['user']!=null&&$_SESSION['pass']!=null){
 			if(move_uploaded_file($_FILES['file']['tmp_name'],$user->getUhome().$_FILES['file']['name'])){
 				echo json_encode(['errCode'=>0,'msg'=>'上传成功']);
 			}
+		}
+	}
+	
+	if($action=='deleteFile'){
+		$file=$user->getUhome().$_POST['filename'];
+		if(file_exists($file)){
+			unlink($file);
+			echo json_encode(['errCode'=>0,'msg'=>'删除成功']);
+		}else{
+			echo json_encode(['errCode'=>201,'msg'=>'文件不存在']);
 		}
 	}
 }

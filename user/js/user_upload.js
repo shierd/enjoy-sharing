@@ -12,6 +12,7 @@ $(document).ready(function(){
 		}).done(function(data){
 			var data=$.parseJSON(data);
 			alert(data.msg);
+			window.location.href='userfile.php';
 		}).fail(function(data){
 			
 		});

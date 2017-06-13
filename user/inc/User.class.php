@@ -51,4 +51,12 @@ class User{
 		return false;
 	}
 	
+	public function getUfiles(){
+		$files['name']=scandir($this->uhome);
+		foreach($files['name'] as $file){
+			$files['type'][]=filetype($this->uhome.$file);
+		}
+		return $files;
+	}
+	
 }
