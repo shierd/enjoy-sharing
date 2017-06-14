@@ -68,19 +68,17 @@ if($_SESSION['user']!=null&&$_SESSION['pass']!=null){
 		//类型检查
 		
 		if($_FILES['file']['error']==UPLOAD_ERR_OK){
-			if(move_uploaded_file($_FILES['file']['tmp_name'],$user->getUhome().$_FILES['file']['name'])){
+			if($user->uploadFile($_FILES['file']['tmp_name'],$_FILES['file']['name'])){
 				echo json_encode(['errCode'=>0,'msg'=>'上传成功']);
 			}
 		}
 	}
 	
 	if($action=='deleteFile'){
-		$file=$user->getUhome().$_POST['filename'];
-		if(file_exists($file)){
-			unlink($file);
+		if($user->deleteFile($_POST['filename'])){
 			echo json_encode(['errCode'=>0,'msg'=>'删除成功']);
 		}else{
-			echo json_encode(['errCode'=>201,'msg'=>'文件不存在']);
+			echo json_encode(['errCode'=>201,'msg'=>'未知错误']);
 		}
 	}
 }

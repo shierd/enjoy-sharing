@@ -24,6 +24,12 @@ class DB{
 		return $res;
 	}
 	
+	public static function delete($sql){
+		if(self::$conn==null) return '请连接数据库';
+		$res=self::$conn->query($sql);
+		return $res;
+	}
+	
 	public static function close(){
 		self::$conn->close();
 	}

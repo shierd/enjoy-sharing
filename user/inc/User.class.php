@@ -5,6 +5,7 @@ require_once(ROOT.'inc/DB.class.php');
 
 class User{
 	
+	private $uid;
 	private $email;
 	private $uname;
 	private $upass;
@@ -15,10 +16,11 @@ class User{
 		$this->upass=$upass;
 		if($uname==null){
 			DB::connect();
-			$res=DB::query("select u_name,u_home from user where u_email='{$email}'");
+			$res=DB::query("select u_id,u_name,u_home from user where u_email='{$email}'");
 			$user=(count($res)==0) ? null : $res[0];
 			$this->uname=$user['u_name'];
 			$this->uhome=USERHOME.$user['u_home'].'/';
+			$this->uid=$user['u_id'];
 			DB::close();
 		}else
 			$this->uname=$uname;
@@ -52,11 +54,36 @@ class User{
 	}
 	
 	public function getUfiles(){
-		$files['name']=scandir($this->uhome);
-		foreach($files['name'] as $file){
-			$files['type'][]=filetype($this->uhome.$file);
+		DB::connect();
+		$res=DB::query("select f_name,f_type from es_file");
+		DB::close();
+		$files=null;
+		foreach($res as $file){
+			$files['name'][]=$file['f_name'];
+			$files['type'][]=$file['f_type'];
 		}
 		return $files;
+	}
+	
+	public function uploadFile($fileTmpName,$filename){
+		$ft=substr(strrchr($filename,'.'),1);
+		DB::connect();
+		$success=DB::insert("insert into es_file (f_name,f_type,f_user) values ('{$filename}','{$ft}','{$this->uid}')");
+		DB::close();
+		if($success){
+			if(move_uploaded_file($fileTmpName,$this->uhome.$filename)) return true;
+		}
+		return false;
+	}
+	
+	public function deleteFile($filename){
+		DB::connect();
+		$success=DB::delete("delete from es_file where f_name='{$filename}' and f_user={$this->uid}");
+		DB::close();
+		if($success&&file_exists($this->uhome.$filename)){
+			if(unlink($this->uhome.$filename)) return true;
+		}
+		return false;
 	}
 	
 }

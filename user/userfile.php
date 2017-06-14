@@ -18,7 +18,7 @@
 	<th>类型</th>
 	<th>操作</th>
 </tr>
-<?php for($i=2;$i<count($files['name']);$i++){?>
+<?php for($i=0;$i<count($files['name']);$i++){?>
 <tr>
 	<td id="filename"><?php echo $files['name'][$i] ?></td>
 	<td><?php echo $files['type'][$i] ?></td>
