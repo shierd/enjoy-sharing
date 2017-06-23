@@ -3,10 +3,10 @@
 ?>
 
 <div id="content">
-<form>
+<form action="result.php">
 type everything what you want:
-<input type="text" />
-<button id="search" >搜索</button>
+<input name="keyword" type="text" />
+<button type="submit" >搜索</button>
 </form>
 </div>
 

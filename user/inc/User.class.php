@@ -67,8 +67,9 @@ class User{
 	
 	public function uploadFile($fileTmpName,$filename){
 		$ft=substr(strrchr($filename,'.'),1);
+		$uptime=date("Y-m-d H:i:s");
 		DB::connect();
-		$success=DB::insert("insert into es_file (f_name,f_type,f_user) values ('{$filename}','{$ft}','{$this->uid}')");
+		$success=DB::insert("insert into es_file (f_name,f_type,f_user,f_uptime) values ('{$filename}','{$ft}','{$this->uid}','{$uptime}')");
 		DB::close();
 		if($success){
 			if(move_uploaded_file($fileTmpName,$this->uhome.$filename)) return true;
