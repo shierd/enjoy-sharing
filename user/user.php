@@ -53,7 +53,7 @@ if($action=='login'){
 	}
 }
 
-if($_SESSION['user']!=null&&$_SESSION['pass']!=null){
+if(isset($_SESSION['user'])&&isset($_SESSION['pass'])){
 	$user=new User($_SESSION['user'],$_SESSION['pass']);
 	
 	if($action=='upload'){
@@ -65,10 +65,13 @@ if($_SESSION['user']!=null&&$_SESSION['pass']!=null){
 			echo json_encode(['errCode'=>102,'msg'=>'文件已存在']);
 			exit(0);
 		}
+		if(isset($_POST['tags'])){
+			$tags=explode(",",$_POST['tags']);
+		}
 		//类型检查
 		
 		if($_FILES['file']['error']==UPLOAD_ERR_OK){
-			if($user->uploadFile($_FILES['file']['tmp_name'],$_FILES['file']['name'])){
+			if($user->uploadFile($_FILES['file']['tmp_name'],$_FILES['file']['name'],$tags)){
 				echo json_encode(['errCode'=>0,'msg'=>'上传成功']);
 			}
 		}

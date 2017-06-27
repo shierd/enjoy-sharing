@@ -6,7 +6,7 @@ class Handler{
 	public static function search($text){
 		if($text=="") return null;
 		DB::connect();
-		$res=DB::query("select * from es_file where f_name like '%$text%'");
+		$res=DB::query("select * from es_file where f_name like '%$text%' or f_tag like '%$text%'");
 		DB::close();
 		return $res;
 	}

@@ -16,7 +16,7 @@ class User{
 		$this->upass=$upass;
 		if($uname==null){
 			DB::connect();
-			$res=DB::query("select u_id,u_name,u_home from user where u_email='{$email}'");
+			$res=DB::query("select u_id,u_name,u_home from es_user where u_email='{$email}'");
 			$user=(count($res)==0) ? null : $res[0];
 			$this->uname=$user['u_name'];
 			$this->uhome=USERHOME.$user['u_home'].'/';
@@ -36,16 +36,16 @@ class User{
 	
 	public function register(){
 		DB::connect();
-		$res=DB::query("select u_home from user order by u_id desc limit 1");
+		$res=DB::query("select u_home from es_user order by u_id desc limit 1");
 		$uhome=(count($res)==0) ? '10001' : ($res[0]['u_home']+1);
-		$success=DB::insert("insert into user (u_name,u_email,u_pass,u_home) values ('{$this->uname}','{$this->email}','{$this->upass}','$uhome')");
+		$success=DB::insert("insert into es_user (u_name,u_email,u_pass,u_home) values ('{$this->uname}','{$this->email}','{$this->upass}','$uhome')");
 		DB::close();
 		if($success) mkdir(USERHOME.$uhome);
 		return $success;
 	}
 	
 	public function login(){
-		$sql="select u_pass from user where u_email='{$this->email}'";
+		$sql="select u_pass from es_user where u_email='{$this->email}'";
 		DB::connect();
 		$res=DB::query($sql);
 		DB::close();
@@ -55,21 +55,27 @@ class User{
 	
 	public function getUfiles(){
 		DB::connect();
-		$res=DB::query("select f_name,f_type from es_file");
+		$res=DB::query("select f_name,f_type,f_tag from es_file");
 		DB::close();
 		$files=null;
 		foreach($res as $file){
 			$files['name'][]=$file['f_name'];
 			$files['type'][]=$file['f_type'];
+			$files['tag'][]=$file['f_tag'];
 		}
 		return $files;
 	}
 	
-	public function uploadFile($fileTmpName,$filename){
+	public function uploadFile($fileTmpName,$filename,$tags){
 		$ft=substr(strrchr($filename,'.'),1);
 		$uptime=date("Y-m-d H:i:s");
 		DB::connect();
-		$success=DB::insert("insert into es_file (f_name,f_type,f_user,f_uptime) values ('{$filename}','{$ft}','{$this->uid}','{$uptime}')");
+		foreach($tags as $tag){
+			$success=DB::insert("insert into es_tag (t_name) values ('{$tag}')");
+			if(!$success) return false;
+		}
+		$tag=implode(",",$tags);
+		$success=DB::insert("insert into es_file (f_name,f_type,f_user,f_uptime,f_tag) values ('{$filename}','{$ft}','{$this->uid}','{$uptime}','{$tag}')");
 		DB::close();
 		if($success){
 			if(move_uploaded_file($fileTmpName,$this->uhome.$filename)) return true;

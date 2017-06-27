@@ -3,11 +3,16 @@
 ?>
 
 <div id="content">
-<form action="result.php">
-type everything what you want:
-<input name="keyword" type="text" />
-<button type="submit" >搜索</button>
-</form>
+	<div class="inner">
+		<form class="form-inline" action="result.php">
+			<div class="input-group">
+				<input class="form-control" id="kwd" name="keyword" type="text" placeholder="Type Everything What You Want..." />
+				<span class="input-group-btn">
+					<button class="btn btn-primary" type="submit" >GO</button>
+				</span>
+			</div>
+		</form>
+	</div>
 </div>
 
 <?php

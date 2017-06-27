@@ -16,12 +16,14 @@
 <tr>
 	<th>文件名</th>
 	<th>类型</th>
+	<th>标签</th>
 	<th>操作</th>
 </tr>
 <?php for($i=0;$i<count($files['name']);$i++){?>
 <tr>
 	<td id="filename"><?php echo $files['name'][$i] ?></td>
 	<td><?php echo $files['type'][$i] ?></td>
+	<td><?php echo $files['tag'][$i] ?></td>
 	<td><a href="#" name="delete" >删除</a></td>
 </tr>
 <?php } ?>
