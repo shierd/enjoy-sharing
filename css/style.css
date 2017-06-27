@@ -49,6 +49,12 @@ body{
 	border-bottom-color: #fff;
 }
 
+#header{
+	position:fixed;
+	top:0;
+	width:100%;
+}
+
 #content{
 	color:#000;
 }
@@ -73,3 +79,8 @@ body{
 	color:#fff;
 }
 
+#search{
+	position: fixed;
+	top: 45%;
+	width: 100%;
+}
