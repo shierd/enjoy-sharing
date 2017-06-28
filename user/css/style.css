@@ -12,10 +12,30 @@
 	padding:16px 0;
 }
 
+#back{
+	float: left;
+	padding: 14px 0 0 0;
+}
+
 #btn_register{
 	float:right;
 }
 
-#header .navbar-text{
+#header .navbar-right{
 	margin-right:15px;
+}
+
+.sidebar{
+	background-color:#f5f5f5;
+	padding:0px;
+	position:fixed;
+}
+
+.main{
+	margin-top:-15px;
+}
+
+.main h2{
+	border-bottom: 1px solid #eee;
+	padding-bottom: 15px;
 }

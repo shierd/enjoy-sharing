@@ -24,6 +24,9 @@
 			<input class="form-control" id="password" type="password" name="upass" />
 		</div>
 	</div>
+	<div id="back">
+		<a href="index.php">&laquo;Back to sign in</a>
+	</div>
 	<button id="btn_register" type="button" class="btn btn-success" >注册</button>
 </form>
 </div>
