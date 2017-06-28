@@ -1,0 +1,17 @@
+#signin{
+	width:330px;
+	margin:120px auto;
+}
+
+#signup{
+	width:330px;
+	margin:120px auto;
+}
+
+#signup h2{
+	padding:16px 0;
+}
+
+#btn_register{
+	float:right;
+}
