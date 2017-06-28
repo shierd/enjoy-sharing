@@ -1,10 +1,16 @@
 <?php
 
-require_once "inc/DB.class.php"
+require_once "inc/Handler.class.php";
 
 //过滤
-if(isset($_POST['action'])) $action=$_POST['action'];
+if(isset($_GET['action'])) $action=$_GET['action'];
 
-if($action=="search"){
-	
+if($action=="getFileDetail"){
+	//过滤
+	if(isset($_GET['fileId'])){
+		$res=Handler::getFileDetail($_GET['fileId']);
+		if($res!=null){
+			echo json_encode(['errCode'=>0,'intro'=>$res[0]['f_intro'],'name'=>$res[0]['f_name']]);
+		}
+	}
 }

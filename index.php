@@ -1,12 +1,19 @@
 <?php
+
+	require 'inc/Handler.class.php';
 	require 'common/header.php';
+	
+	$tags=Handler::getTags();
 ?>
 
 <div id="content">
 	<div>
 		<canvas width="1024" height="520" id="tagCanvas">
             <ul>
-                <li><a href="#">Google</a></li>
+				<?php if($tags!=null){ ?>
+					<?php foreach($tags as $row){ ?>
+					<li><a href="/result.php?keyword=<?php echo $row['t_name']; ?>"><?php echo $row['t_name']; ?></a></li>
+                <!--<li><a href="#">Google</a></li>
                 <li><a href="#">Fish</a></li>
                 <li><a href="#">Chips</a></li>
                 <li><a href="#">Salt</a></li>
@@ -25,7 +32,9 @@
                 <li><a href="#">PK</a></li>
                 <li><a href="#">PHP</a></li>
                 <li><a href="#">ABC</a></li>
-                <li><a href="#">Version</a></li>
+                <li><a href="#">Version</a></li>-->
+					<?php } ?>
+				<?php } ?>
             </ul>
         </canvas>
 	</div>

@@ -29,8 +29,9 @@ CREATE TABLE `es_file` (
   `f_user` int(11) DEFAULT NULL,
   `f_uptime` datetime DEFAULT NULL,
   `f_tag` varchar(512) DEFAULT NULL,
+  `f_intro` text,
   PRIMARY KEY (`f_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=gbk;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=gbk;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +40,7 @@ CREATE TABLE `es_file` (
 
 LOCK TABLES `es_file` WRITE;
 /*!40000 ALTER TABLE `es_file` DISABLE KEYS */;
-INSERT INTO `es_file` VALUES (1,'ConoHa3.txt','txt',1,'2017-06-27 15:06:02',NULL),(2,'ConoHa2.txt','txt',1,'2017-06-27 15:09:46','qweer,eryqqw,rtuafg');
+INSERT INTO `es_file` VALUES (1,'ConoHa2.txt','txt',1,'2017-06-28 14:38:55','PHP,ASP,JSP',NULL),(2,'ConoHa1.txt','txt',1,'2017-06-28 14:39:34','ASPX,Hello,World',NULL),(3,'ConoHa0.txt','txt',1,'2017-06-28 14:40:16','HH,Good,Is',NULL),(4,'ConoHa5.txt','txt',1,'2017-06-28 14:41:08','ABC,Admin,Shen',NULL),(5,'ConoHa8.txt','txt',1,'2017-06-28 14:41:40','More,And,sql',NULL),(6,'ConoHa11.txt','txt',1,'2017-06-28 14:42:18','Zhou,Lun,Jie',NULL),(7,'ConoHa112.txt','txt',1,'2017-06-28 14:42:49','End,Finnished,Hi',NULL),(8,'ConoHa12.txt','txt',1,'2017-06-28 17:55:55','BB,DOTA,HA','Asd is sad dsafhk');
 /*!40000 ALTER TABLE `es_file` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -54,7 +55,7 @@ CREATE TABLE `es_tag` (
   `t_id` int(11) NOT NULL AUTO_INCREMENT,
   `t_name` varchar(32) NOT NULL,
   PRIMARY KEY (`t_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=gbk;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=gbk;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -63,7 +64,7 @@ CREATE TABLE `es_tag` (
 
 LOCK TABLES `es_tag` WRITE;
 /*!40000 ALTER TABLE `es_tag` DISABLE KEYS */;
-INSERT INTO `es_tag` VALUES (1,'php'),(2,'asp'),(3,'jsp'),(4,'asffasf'),(5,'qweer'),(6,'eryqqw'),(7,'rtuafg');
+INSERT INTO `es_tag` VALUES (1,'PHP'),(2,'ASP'),(3,'JSP'),(4,'ASPX'),(5,'Hello'),(6,'World'),(7,'HH'),(8,'Good'),(9,'Is'),(10,'ABC'),(11,'Admin'),(12,'Shen'),(13,'More'),(14,'And'),(15,'sql'),(16,'Zhou'),(17,'Lun'),(18,'Jie'),(19,'End'),(20,'Finnished'),(21,'Hi'),(22,'BB'),(23,'DOTA'),(24,'HA');
 /*!40000 ALTER TABLE `es_tag` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -81,7 +82,7 @@ CREATE TABLE `es_user` (
   `u_pass` varchar(32) NOT NULL,
   `u_home` varchar(32) NOT NULL,
   PRIMARY KEY (`u_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=gbk;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=gbk;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -90,7 +91,7 @@ CREATE TABLE `es_user` (
 
 LOCK TABLES `es_user` WRITE;
 /*!40000 ALTER TABLE `es_user` DISABLE KEYS */;
-INSERT INTO `es_user` VALUES (1,'admin','admin@qq.com','admin','10001'),(2,'admin','admin@qq.com','admin','10002'),(3,'123456','cccc@qq.com','admin','10003');
+INSERT INTO `es_user` VALUES (1,'admin','admin@qq.com','admin','10001');
 /*!40000 ALTER TABLE `es_user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -103,4 +104,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-06-27 18:53:12
+-- Dump completed on 2017-06-28 19:01:08

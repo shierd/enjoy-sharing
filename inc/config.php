@@ -9,6 +9,8 @@ define('ROOT',dirname(__FILE__).'/../');
 define('USER',dirname(__FILE__).'/../user/');
 define('USERHOME',dirname(__FILE__).'/../userhome/');
 
+define('PER_PAGE_NUM',5);
+
 $debug=true;
 if($debug){
 	ini_set('display_errors',1);

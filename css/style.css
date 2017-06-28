@@ -105,6 +105,12 @@ body{
 
 #search-result .panel-body{
 	background-color:#333;
+	height:75%;
+}
+
+#file-list{
+	width:65%;
+	float:left;
 }
 
 #file-list .list-group-item{
@@ -128,4 +134,10 @@ body{
 
 #file-list .list-group-item.active .list-group-item-text{
 	color:#000;
+}
+
+#file-detail{
+	float:left;
+	width:35%;
+	height:470px;
 }

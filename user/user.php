@@ -68,10 +68,13 @@ if(isset($_SESSION['user'])&&isset($_SESSION['pass'])){
 		if(isset($_POST['tags'])){
 			$tags=explode(",",$_POST['tags']);
 		}
+		if(isset($_POST['intro'])){
+			$intro=$_POST['intro'];
+		}
 		//类型检查
 		
 		if($_FILES['file']['error']==UPLOAD_ERR_OK){
-			if($user->uploadFile($_FILES['file']['tmp_name'],$_FILES['file']['name'],$tags)){
+			if($user->uploadFile($_FILES['file']['tmp_name'],$_FILES['file']['name'],$tags,$intro)){
 				echo json_encode(['errCode'=>0,'msg'=>'上传成功']);
 			}
 		}

@@ -9,9 +9,10 @@
 
 <div id="content">
 <form id="form_upload" enctype="multipart/form-data">
+	introduction:<textarea name="intro" cols="50" rows="6"></textarea></br>
 	tags:<input type="text" name="tags" /><br />
 	<input type="hidden" name="MAX_FILE_SIZE" value="2097152" />
-	<input type="file" name="file" />
+	file:<input type="file" name="file" />
 	<button id="btn_upload" type="button" >上传</button>
 </form>
 </div>
