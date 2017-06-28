@@ -15,3 +15,7 @@
 #btn_register{
 	float:right;
 }
+
+#header .navbar-text{
+	margin-right:15px;
+}

@@ -6,9 +6,7 @@
 	}
 	require_once('../inc/config.php');
 	require_once(USER.'inc/User.class.php');
-	require 'layouts/user_header.php';
-	
-	$user=new User($_SESSION['user'],$_SESSION['pass']);
+	require 'layouts/user_navbar.php';
 ?>
 
 <div id="content">
