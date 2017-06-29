@@ -29,13 +29,28 @@
 	background-color:#f5f5f5;
 	padding:0px;
 	position:fixed;
+	top:51px;
+	margin-top:20px;
 }
 
-.main{
-	margin-top:-15px;
+.sidebar li{
+	cursor:pointer;
 }
 
-.main h2{
+#main{
+	margin-top:51px;
+	padding-top:6px;
+}
+
+.tab-title{
 	border-bottom: 1px solid #eee;
 	padding-bottom: 15px;
+}
+
+.tab-item{
+	display:none;
+}
+
+.tab-main .active{
+	display:block;
 }
