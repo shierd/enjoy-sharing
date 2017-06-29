@@ -2,6 +2,11 @@
 	/*
 	*	会员登录页
 	*/
+	session_start();
+	if(isset($_SESSION['user'])){
+		header("location:dashboard.php");
+		exiit(0);
+	}
 	require 'layouts/user_header.php';
 ?>
 

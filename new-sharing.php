@@ -3,12 +3,9 @@
 	require 'common/header.php';
 	
 	//过滤
-	if(isset($_GET['keyword'])){
-		$page=isset($_GET['page']) ? $_GET['page'] : 1 ;
-		$text=$_GET['keyword'];
-		$resFile=Handler::search($text,$page);
-	}
-	$resCount=Handler::getSearchCount($text);
+	$page=isset($_GET['page']) ? $_GET['page'] : 1 ;
+	$resFile=Handler::queryNewSharing($page);
+	$resCount=Handler::getAllCount();
 	$pagination=ceil($resCount/PER_PAGE_NUM);
 ?>
 
@@ -27,7 +24,7 @@
 					<?php foreach($tags as $tag){ ?>
 						<a href="/result.php?keyword=<?php echo $tag ?>"><span class="label label-default"><?php echo $tag; ?></span></a>
 					<?php } ?>
-						<div class="text-right text-down"><a href="#"><span class="label label-success label-down glyphicon glyphicon-save">DOWN</span></a></div>
+					<div class="text-right text-down"><a href="#"><span class="label label-success label-down glyphicon glyphicon-save">DOWN</span></a></div>
 					</div>
 				</span>
 				<?php } ?>
@@ -35,13 +32,13 @@
 		</div>
 		<div id="pagination">
 			<ul class="pagination">
-				<li <?php if($page-1<=0) echo 'class="disabled"' ?>><a href="/result.php?keyword=<?php echo $text; ?>&page=<?php echo ($page-1<=0)?1:$page-1; ?>">&laquo;</a></li>
+				<li <?php if($page-1<=0) echo 'class="disabled"' ?>><a href="/new-sharing.php?page=<?php echo ($page-1<=0)?1:$page-1; ?>">&laquo;</a></li>
 				<?php
 					for($p=1;$p<=$pagination;$p++){
-						if($p==$page) echo '<li class="active"><a href="/result.php?keyword='.$text.'&page='.$p.'">'.$p.'</a></li>';
-						else echo '<li><a href="/result.php?keyword='.$text.'&page='.$p.'">'.$p.'</a></li>';
+						if($p==$page) echo '<li class="active"><a href="/new-sharing.php?page='.$p.'">'.$p.'</a></li>';
+						else echo '<li><a href="/new-sharing.php?page='.$p.'">'.$p.'</a></li>';
 				} ?>
-				<li <?php if($page+1>$pagination) echo 'class="disabled"' ?>><a href="/result.php?keyword=<?php echo $text; ?>&page=<?php echo ($page+1>$pagination)?$pagination:$page+1; ?>">&raquo;</a></li>
+				<li <?php if($page+1>$pagination) echo 'class="disabled"' ?>><a href="/new-sharing.php?page=<?php echo ($page+1>$pagination)?$pagination:$page+1; ?>">&raquo;</a></li>
 			</ul>
 		</div>
 	</div>

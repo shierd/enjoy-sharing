@@ -12,12 +12,12 @@
 <div id="header">
 	<div class="masthead clearfix">
 		<div class="inner">
-			<h3 class="masthead-brand">Enjoy Sharing</h3>
+			<a href="index.php"><h3 class="masthead-brand">Enjoy Sharing</h3></a>
 			<nav>
 				<ul class="nav masthead-nav">
-					<li class="active"><a href="index.php">Home</a></li>
-					<li><a href="#">Features</a></li>
-					<li><a href="#">Contact</a></li>
+					<li id="index" class="active"><a href="index.php">Home</a></li>
+					<li id="new-sharing"><a href="new-sharing.php">New Sharing</a></li>
+					<li><a href="/user/index.php">Sign Up</a></li>
 				</ul>
 			</nav>
 		</div>

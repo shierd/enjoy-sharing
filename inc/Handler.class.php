@@ -20,11 +20,19 @@ class Handler{
 		return $resCount[0]["count"];
 	}
 	
-	public static function queryNewFile(){
+	public static function queryNewSharing($page){
+		$offset=($page-1)*PER_PAGE_NUM;
 		DB::connect();
-		$res=DB::query("select * from es_file order by f_uptime desc");
+		$res=DB::query("select * from es_file order by f_uptime desc limit {$offset},".PER_PAGE_NUM);
 		DB::close();
 		return $res;
+	}
+	
+	public static function getAllCount(){
+		DB::connect();
+		$resCount=DB::query("select count(*) as count from es_file");
+		DB::close();
+		return $resCount[0]["count"];
 	}
 	
 	public static function getTags(){

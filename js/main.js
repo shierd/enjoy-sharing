@@ -1,5 +1,14 @@
 $(document).ready(function(){
 	$('#tagCanvas').attr("width",$(window).width()).attr("height",$(window).height());
+	var url=window.location.href;
+	var urlMatch=url.match(/[\w|-]+\.php/);
+	var navId="index";
+	if(urlMatch!=null){
+		var urlFile=urlMatch[0];
+		var navId=urlFile.substring(0,urlFile.indexOf("."));
+	}
+	$("#header ul.masthead-nav").children().removeClass("active");
+	$("#"+navId).addClass("active");
 	if(!$('#tagCanvas').tagcanvas({ 
 	    textColour : '#ffffff', 
    		maxSpeed : 0.05, 
@@ -23,4 +32,22 @@ $(document).ready(function(){
 			}
 		});
 	});
+	
+	$('#file-list .text-down').click(function(){
+		$.ajax({
+			url:"main.php",
+			type:"GET",
+			data:{"action":"download","byuser":$(this).parent().parent().children('h4').attr("by"),"filename":$(this).parent().parent().children('h4').html()},
+			success:function(data){
+				var data=$.parseJSON(data);
+				if(data.errCode==0){
+					var downIf=document.createElement("iframe");
+					downIf.src=data.downurl;
+					downIf.style.display="none";
+					document.body.appendChild(downIf);
+				}
+			}
+		});
+	})
+	
 });

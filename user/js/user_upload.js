@@ -12,7 +12,7 @@ $(document).ready(function(){
 		}).done(function(data){
 			var data=$.parseJSON(data);
 			alert(data.msg);
-			window.location.href='userfile.php';
+			window.location.href='dashboard.php';
 		}).fail(function(data){
 			
 		});

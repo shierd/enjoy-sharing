@@ -19,6 +19,7 @@ body{
 	margin-top: 10px;
 	margin-bottom: 10px;
 	float:left;
+	color:#fff;
 }
 
 .masthead-nav > li {
@@ -53,6 +54,7 @@ body{
 	position:absolute;
 	top:0;
 	width:100%;
+	z-index:100;
 }
 
 #content{
@@ -106,6 +108,15 @@ body{
 #search-result .panel-body{
 	background-color:#333;
 	height:75%;
+}
+
+.text-right{
+	float:right;
+}
+
+.label-down{
+	padding:7px;
+	font-size:80%;
 }
 
 #file-list{

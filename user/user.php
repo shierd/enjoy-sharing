@@ -27,8 +27,10 @@ if($action=='register'){
 		$user=new User($email,$uname,$upass);
 		if($user->register()){
 			echo json_encode(['errCode'=>0,'msg'=>'注册成功']);
+			exit(0);
 		}else{
 			echo json_encode(['errCode'=>1,'msg'=>'注册失败']);
+			exit(0);
 		}
 	}
 }
@@ -48,8 +50,10 @@ if($action=='login'){
 		$_SESSION['user']="$useremail";
 		$_SESSION['pass']="$userpass";
 		echo json_encode(['errCode'=>0]);
+		exit(0);
 	}else{
 		echo json_encode(['errCode'=>1,'msg'=>'用户名或密码错误']);
+		exit(0);
 	}
 }
 
@@ -76,6 +80,7 @@ if(isset($_SESSION['user'])&&isset($_SESSION['pass'])){
 		if($_FILES['file']['error']==UPLOAD_ERR_OK){
 			if($user->uploadFile($_FILES['file']['tmp_name'],$_FILES['file']['name'],$tags,$intro)){
 				echo json_encode(['errCode'=>0,'msg'=>'上传成功']);
+				exit(0);
 			}
 		}
 	}
@@ -83,8 +88,18 @@ if(isset($_SESSION['user'])&&isset($_SESSION['pass'])){
 	if($action=='deleteFile'){
 		if($user->deleteFile($_POST['filename'])){
 			echo json_encode(['errCode'=>0,'msg'=>'删除成功']);
+			exit(0);
 		}else{
 			echo json_encode(['errCode'=>201,'msg'=>'未知错误']);
+			exit(0);
+		}
+	}
+	
+	if($action=='logout'){
+		$user=null;
+		if(session_destroy()){
+			echo json_encode(['errCode'=>0]);
+			exit(0);
 		}
 	}
 }
