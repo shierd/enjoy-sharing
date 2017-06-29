@@ -9,8 +9,9 @@
 	$pagination=ceil($resCount/PER_PAGE_NUM);
 ?>
 
-<div id="content">
-<div id="search-result" class="panel panel-default">
+<div class="content">
+<div id="search-result">
+<div class="panel panel-default">
 <div class="panel-heading">Find Something Interesting...</div>
 <div class="panel-body">
 	<div id="file-list">
@@ -48,6 +49,7 @@
 			<div class="panel-body">Choose Something...</div>
 		</div>
 	</div>
+</div>
 </div>
 </div>
 </div>

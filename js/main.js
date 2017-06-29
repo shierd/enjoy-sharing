@@ -9,15 +9,18 @@ $(document).ready(function(){
 	}
 	$("#header ul.masthead-nav").children().removeClass("active");
 	$("#"+navId).addClass("active");
+	
 	if(!$('#tagCanvas').tagcanvas({ 
 	    textColour : '#ffffff', 
    		maxSpeed : 0.05, 
    		depth : 1.24 })) {
       		// TagCanvas failed to load 
         	$('#tagCanvas').hide(); 
-    	}
+    }
 	
-	$('#file-list .list-group span').click(function(){
+	$('#file-list .list-group span.list-group-item').click(function(){
+		$(this).parent().children().removeClass("active");
+		$(this).addClass("active");
 		$.ajax({
 			url:"/main.php",
 			type:"GET",

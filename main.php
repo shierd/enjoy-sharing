@@ -24,6 +24,6 @@ if($action=="download"){
 		echo json_encode(['errCode'=>1,'msg'=>'文件不存在了']);
 		exit(0);
 	}else{
-		echo json_encode(['errCode'=>0],'downurl'=>"/download.php?byuser=$byuser&filename=$filename");
+		echo json_encode(['errCode'=>0,'downurl'=>"/download.php?byuser=$byuser&filename=$filename"]);
 	}
 }

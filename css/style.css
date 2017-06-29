@@ -57,6 +57,14 @@ body{
 	z-index:100;
 }
 
+.content{
+	text-align:left;
+	color:#000;
+	position:relative;
+	top:77px;
+	padding:16px 0 0 0;
+}
+
 #content{
 	text-align:left;
 	color:#000;
@@ -94,9 +102,7 @@ body{
 }
 
 #search-result{
-	position:relative;
-	top:82px;
-	margin:16px;
+	height:645px;
 }
 
 #search-result .panel-heading{
@@ -108,6 +114,14 @@ body{
 #search-result .panel-body{
 	background-color:#333;
 	height:75%;
+	padding:0px;
+	position:relative;
+}
+
+#pagination{
+	position:absolute;
+	bottom:0px;
+	padding:0 0 0 16px;
 }
 
 .text-right{
@@ -151,4 +165,8 @@ body{
 	float:left;
 	width:35%;
 	height:470px;
+}
+
+#file-detail .panel-body{
+	padding:16px;
 }
