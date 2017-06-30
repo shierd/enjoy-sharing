@@ -10,6 +10,7 @@ if($action=="getFileDetail"){
 	if(isset($_GET['fileId'])){
 		$res=Handler::getFileDetail($_GET['fileId']);
 		if($res!=null){
+			if($res[0]['f_intro']=="") $res[0]['f_intro']=null;
 			echo json_encode(['errCode'=>0,'intro'=>$res[0]['f_intro'],'name'=>$res[0]['f_name']]);
 			exit(0);
 		}

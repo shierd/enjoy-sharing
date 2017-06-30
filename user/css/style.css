@@ -50,3 +50,13 @@
 .tab-main .active{
 	display:block;
 }
+
+.label-down{
+	padding:7px;
+	font-size:80%;
+}
+
+.text-right{
+	float:right;
+	margin: 0 4px;
+}

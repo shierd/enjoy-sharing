@@ -25,8 +25,12 @@
 					<h4 class="list-grouop-item-header" by="<?php echo $row['f_user']; ?>" name="<?php echo $row['f_id'] ?>"><?php echo $row['f_name']; ?></h4>
 					<div class="list-group-item-text">
 					<?php $tags=explode(',',$row['f_tag']); ?>
+					<?php if($tags[0]!=""){ ?>
 					<?php foreach($tags as $tag){ ?>
 						<a href="/result.php?keyword=<?php echo $tag ?>"><span class="label label-default"><?php echo $tag; ?></span></a>
+					<?php } ?>
+					<?php }else{ ?>
+						No Tags...
 					<?php } ?>
 						<div class="text-right text-down"><a href="#"><span class="label label-success label-down glyphicon glyphicon-save">DOWN</span></a></div>
 					</div>

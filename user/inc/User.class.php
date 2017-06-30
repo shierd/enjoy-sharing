@@ -55,7 +55,7 @@ class User{
 	
 	public function getUfiles(){
 		DB::connect();
-		$res=DB::query("select f_name,f_type,f_tag from es_file");
+		$res=DB::query("select f_name,f_type,f_tag from es_file order by f_uptime desc");
 		DB::close();
 		$files=null;
 		foreach($res as $file){
